@@ -9,9 +9,9 @@ Use the local node, npm, and npx scripts. These wrap a docker container version
 of the actual tools.
 
 ```bash
-./npm i
-./node script.js
-./npx tslint
+npm i
+node script.js
+npx tslint
 ```
 
 *TODO*: The `./node` script in this project defaults to calling `docker run` with
@@ -39,7 +39,7 @@ View the swagger doc for your API at:
 Uses typescript and ts-node to run the app.
 
 ```bash
-./npm run dev
+npm run dev
 ```
 
 # Test (Jest)
@@ -63,7 +63,7 @@ and is required for commits. This keeps your code clean by removing all those
 unnecessary semicolons.
 
 ```bash
-./npm run pretty
+npm run pretty
 ```
 
 # TSlint
@@ -72,7 +72,7 @@ Ensure code is free of bad practice patterns. Use best practices for
 tyepscript and ES6.
 
 ```bash
-./npm run lint
+npm run lint
 ```
 # Git Hooks
 

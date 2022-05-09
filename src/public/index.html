@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Home</h1>
+        <input type="file" name="file" id="file" /><br>
+        <script>
+            var fileInput = document.getElementById('file');
+            fileInput.addEventListener('change', function(e) {
+                var file = fileInput.files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/upload');
+                xhr.send(formData);
+
+                // get returned data
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        console.log(data);
+
+                        var img = document.createElement('img');
+                        img.style.maxWidth = '100px';
+                        img.style.maxHeight = '100px';
+                        img.src = data.url;
+                        document.body.appendChild(img);
+
+                        var span = document.createElement('span')
+                        span.innerHTML = data.url
+                        document.body.appendChild(span);
+
+                        document.body.appendChild(document.createElement('br'));
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
